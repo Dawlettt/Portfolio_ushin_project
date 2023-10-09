@@ -1,0 +1,18 @@
+{%extends 'base.html'%}
+{%block content%}
+<h1><a href="{%url 'articles'%}">News</a></h1>
+<div>
+    <div>
+        <h2>{{articles.title}}</h2>
+    </div>
+    {%if articles.photo%}
+    <div> <img class="card-img-top" src="{{articles.photo.url}}" alt="{{articles.title}}"></div>
+    {%endif%}
+    <div>
+        <p>{{articles.body}}</p>
+    </div>
+    <div>author:{{articles.author}} <br />date: {{articles.date}}</div>
+    <p><a href="{%url 'article_update' articles.pk%}">edit</a>|<a href="{%url 'article_delete' articles.pk%}">delete</a>
+    </p>
+</div>
+{%endblock content%}

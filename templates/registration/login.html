@@ -1,0 +1,17 @@
+{%extends 'base.html'%}
+{%block title%}Log In{%endblock title%}
+{%block content%}
+<form action="" method="post">{%csrf_token%}
+    <div class="col-md-4 offset-md-4">
+        {{ form.as_p }}
+        <input type="submit" value="login">
+        {%if user.is_authenticated%}
+        <h3>Hi {{user.last_name}} {{user.first_name}}</h3>
+        <p><a href="{%url 'logout'%}">logout</a>|<a href="{%url 'password_change'%}">password change</a></p>
+        {%else%}
+        <p><a href="{%url 'password_reset'%}">reset password</a></p>
+        {%endif%}
+    </div>
+</form>
+
+{%endblock content%}

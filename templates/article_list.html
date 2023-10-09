@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+{%block title%}Posts{%endblock title%}
+
+{%block content%}
+{%for articles in object_list%}
+
+
+<div class="card" style="width: 60rem;">
+    <div>
+        <h4 class="card-text"><a href="{%url 'article_detail' articles.pk%}">{{articles.title}}</a></h4>
+    </div>
+    <div class="card-body">
+        {%if articles.photo%}
+        <img class="card-img-top" src="{{articles.photo.url}}" alt="{{articles.title}}">
+        {%endif%}
+        <p class="card-text">{{articles.summary}}</p>
+    </div>
+
+    <div class="card-footer">author:{{articles.author}} <br />date: {{articles.date}}</div>
+</div>
+
+
+
+
+{%endfor%}
+{%endblock content%}
